@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.19-pr16">
+
+    
+  <!-- Spot Style - ponto -->
+
+
+  <style name="Iconponto"
+         url="%FIRSTXML%/spots/arrow_user_defaultpoint01.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconponto"
+         onout="onoutIconponto"
+
+
+         width="32"
+         height="prop"
+         />
+  <action name="onhoverIconponto">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoutIconponto">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+  <!-- unsupported kind of display : PointMap -->
+
+
+    
+  <!-- Spot Style - arrow_up -->
+
+
+  <style name="Iconarrow_up"
+         url="%FIRSTXML%/spots/arrow_user_defaultpoint4.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconarrow_up"
+         onout="onoutIconarrow_up"
+
+
+         width="32"
+         height="prop"
+         />
+  <action name="onhoverIconarrow_up">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoutIconarrow_up">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+<!-- ********** -->
+<!-- localizacao -->
+<!-- id : logo2 -->
+<!-- ********** -->
+
+
+
+
+
+<!-- ********** -->
+<!-- Logo3 -->
+<!-- id : logo3 -->
+<!-- ********** -->
+
+
+
+
+
+  <!-- FLOORPLAN -->
+  <action name="hideFloorplan">set(tour_displayfloorplan, false);events.dispatch(onhidetourfloorplan);</action>
+  <action name="showFloorplan">set(tour_displayfloorplan, true); events.dispatch(onshowtourfloorplan);</action>
+
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+  <action name="enterFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,true);events.dispatch(onenterfullscreen);</action>
+  <action name="exitFullScreenFallback">set(fullscreen,false);</action>
+  <action name="enterFullScreenFallback">set(fullscreen,true);</action>
+  
+  <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
+
+</krpano>
